@@ -26,7 +26,7 @@ foreach(split //, $word){
    push @challenge, "_";
    $x++;
 }
-print @word;
+#print @word;
 print "\n";
 
 my $arrayno = 0;
