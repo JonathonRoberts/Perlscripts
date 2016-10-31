@@ -9,7 +9,7 @@
 #
 #TODO
 #on remote machines run: powercfg /h off
-#on windows host this can be done with psexec.exe >powercgf /h off
+#on windows host this can be done with psexec.exe
 
 
 use strict;
