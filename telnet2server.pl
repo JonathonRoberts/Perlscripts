@@ -7,16 +7,6 @@ use Cwd;
 use IO::Socket;
 use Net::Domain qw(hostname hostfqdn hostdomain);
 
-IO::Socket->input_record_separator('\n');
-
-my $socket = new IO::Socket::INET(
-   LocalPort =>"7070",
-   LocalHost =>'localhost',
-   Proto =>"tcp",
-   Listen => 1,
-   Reuse => 1,
-);
-die "Could not create socket$!\n" unless $socket;
 
 #network variables
 my $clientsocket;
@@ -27,14 +17,52 @@ my $dir = cwd;
 my @pwdfiles = glob($dir . "/*");
 my $username = $ENV{'LOGNAME'};
 my $PS1 =$ENV{'PS1'};
-#my $hostname = hostname();
 my $hostname = hostname();
 my $prompt;
 my $promptdir;
 promptgen();
+#Options
+my $host = 'localhost';
+my $port = 7070;
+my $chosenport = 0;
 #other variables
 my $motd = "Velkomen" . "<NEWLINE>$prompt";
+IO::Socket->input_record_separator('\n');
 
+#Options
+if(defined($ARGV[0]) && $ARGV[0] eq "-p"){
+   if(defined($ARGV[1]) && int($ARGV[1])){
+      $port = $ARGV[1];
+   }else{
+      print "$ARGV[1] is not a valid port number!\n";
+   }
+   $chosenport = 1;
+}
+if($chosenport == 1){
+   if(defined $ARGV[2]){
+      $host = $ARGV[2];}
+}else{
+   if(defined $ARGV[0]){
+      $host = $ARGV[0];}
+}
+for(my $i = 0; $i<10; $i++){
+   if(defined($ARGV[$i]) && $ARGV[$i] eq "-h"){
+      print "\nUsage: telnet2server.pl -p [port] [host]\n       -h for help\n       & to run in background\n\n";
+      exit;
+   }
+}
+
+#Socket
+my $socket = new IO::Socket::INET(
+   LocalPort =>$port,
+   LocalHost =>$host,
+   Proto =>"tcp",
+   Listen => 1,
+   Reuse => 1,
+);
+die "Could not create socket$!\n" unless $socket;
+
+#Main
 loginprompt();
 while(){
    $clientsocket = $socket->accept();
@@ -54,6 +82,8 @@ while(){
    nl();
 }
 $socket->close();
+
+#Subroutines
 sub loginprompt {
    for(my $open = 0; $open == 0;){
       my $loginuname;

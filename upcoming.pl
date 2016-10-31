@@ -5,9 +5,10 @@ use strict;
 use warnings;
 use DateTime;
 
-my $n;
-if($ARGV[0] == "-n"&& $ARGV[1] =~/^\d+$/){$n = $ARGV[1];}
-else{$n = 7;}
+my $n = 7;
+if(defined $ARGV[0] && defined $ARGV[1]){
+   if($ARGV[0] eq "-n"&& $ARGV[1] =~/^\d+$/){$n = $ARGV[1];}
+}
 my $today = DateTime->now;
 my $weektoday = $today;
 my $evday;
