@@ -1,7 +1,8 @@
 #!/usr/bin/perl
 print "Content-Type: text/html\n\n";
 
-#Limitation, can only filter the first page of a public wishlist
+#Shows all items on an Amazon wishlist that are under 2 pounds
+#Limitation: can only filter the first page of a public wishlist
 
 use strict;
 use warnings;
