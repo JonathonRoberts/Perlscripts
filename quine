@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+print "Content-Type: text/html\n\n";
+
+# Quine
+# A program that upon execution will reproduce its own source code.
+
+use strict;
+use Cwd 'cwd';
+
+my $abs = cwd . "/$0";
+open(FILE, "<", "$abs") or die;
+
+foreach(<FILE>){
+   print $_;
+}
+
+close(FILE);
