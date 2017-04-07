@@ -4,6 +4,8 @@ print "Content-Type: text/html\n\n";
 use strict;
 use warnings;
 use DateTime;
+#Simple calander which takes events from the file ~/.upcoming/events and ~/.upcoming/birthdays
+#and displays when they are soon
 
 my $n = 7;
 if(defined $ARGV[0] && defined $ARGV[1]){

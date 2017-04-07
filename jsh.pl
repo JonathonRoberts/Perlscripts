@@ -4,6 +4,8 @@ use warnings;
 use Cwd;
 use Net::Domain qw(hostname hostfqdn hostdomain);
 
+#Simple shell created in perl
+
 
 #Variables
 my $dir = cwd;

@@ -1,6 +1,8 @@
 #!/usr/bin/perl
 print "Content-Type: text/html\n\n";
 
+#simple, no limits grep
+
 use strict;
 use warnings;
 

@@ -1,5 +1,6 @@
 #!/usr/bin/perl
 print "Content-Type: text/html\n\n";
+#Creates an ASCI histogram graph
 
 use strict;
 use warnings;

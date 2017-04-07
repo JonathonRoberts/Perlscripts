@@ -2,6 +2,7 @@
 print "Content-Type: text/html\n\n";
 use strict;
 use warnings;
+
 #Provides statistics extracted from .csv of matched/arbitrage betting logs
 #All commas must be removed from spreadsheet
 
@@ -13,7 +14,7 @@ my @values;
 my %bookieprofit;
 my %dateprofit;
 
-open FILE, @ARGV or die "File not found!\n";
+open FILE, $ARGV[0] or die "File not found!\n";
 while(<FILE>){
    @values = (split(",", $_));
    if($values[0] eq "Total profit"){next;}

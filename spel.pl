@@ -4,6 +4,9 @@ print "Content-Type: text/html\n\n";
 use strict;
 use warnings;
 
+#simple spell checker checks the spelling of file
+#./spel.pl file.txt
+
 open DICT, '/usr/share/dict/words' or die;
 open FILE, "@ARGV" or die "File not found!\n";
 my $dict = <DICT>;
