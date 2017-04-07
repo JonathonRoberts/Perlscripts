@@ -1,2 +1,2 @@
 # Perlscripts
-My collection of Perl scripts
+A collection of my perl scripts
